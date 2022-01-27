@@ -16,6 +16,8 @@ fwrite($handler, "$var \n");
 
 
 fclose($handler);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -49,6 +51,24 @@ fclose($handler);
                 <div class="col-6 offset-3">
                     <p class="notes">
                         <!-- stampare qui le note salvate -->
+                        <?php
+                            // $filename = 'note.txt';
+                            $handler = fopen($filename, 'r');
+
+                            // if (false === $handler) {
+                            //     printf('Impossibile aprire il file %s', $filename);
+                            //     exit;
+                            // }
+
+                            $size = 1024;
+
+                            while (!feof($handler)) {
+                                $content = fgets($handler, $size);
+                                echo '<div>' . $content . '</div>' ;
+                            }
+
+                            fclose($handler);
+                        ?>
                     </p>
                     <fieldset>
                         <legend>Inserisci una nota</legend>
