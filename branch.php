@@ -1,5 +1,4 @@
 <?php
-
 // M1: leggere tramite PHP i campi inviati dal form;
 // M2: aggiungere i dati del form in un file di testo (note.txt). Le note precedenti non devono essere perse;
 // M3: leggere le note salvate sul file e visualizzarle nel layout (dove indicato);
@@ -8,7 +7,14 @@
 $name = $_GET['containerName'];
 $text = $_GET['containerText'];
 
+$filename = 'note.txt';
+$handler = fopen($filename, 'w');
 
+
+fwrite($handler, "mmm"); // Scrive la stringa nel file 100 volte
+
+
+fclose($handler);
 ?>
 
 <!DOCTYPE html>
@@ -46,11 +52,13 @@ $text = $_GET['containerText'];
                     <fieldset>
                         <legend>Inserisci una nota</legend>
                     </fieldset>
-                    <form>
+                    <form method="GET">
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label">Nome</label>
                             <div class="col-sm-10">
+
                                 <input type="text" class="form-control" name="containerName" autocomplete="off">
+
                             </div>
                         </div>
                         <div class="row mb-3">
