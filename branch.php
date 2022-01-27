@@ -8,13 +8,16 @@ $name = $_GET['containerName'];
 $text = $_GET['containerText'];
 
 $filename = 'note.txt';
-$handler = fopen($filename, 'w');
+$handler = fopen($filename, 'a');
+$var = $name . " - " . $text;
 
-
-fwrite($handler, "mmm"); // Scrive la stringa nel file 100 volte
+fwrite($handler, "$var \n");
+// fwrite($handler, $text) . '\n'; // Scrive la stringa nel file 100 volte
 
 
 fclose($handler);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -48,6 +51,24 @@ fclose($handler);
                 <div class="col-6 offset-3">
                     <p class="notes">
                         <!-- stampare qui le note salvate -->
+                        <?php
+                            // $filename = 'note.txt';
+                            $handler = fopen($filename, 'r');
+
+                            // if (false === $handler) {
+                            //     printf('Impossibile aprire il file %s', $filename);
+                            //     exit;
+                            // }
+
+                            $size = 1024;
+
+                            while (!feof($handler)) {
+                                $content = fgets($handler, $size);
+                                echo '<div>' . $content . '</div>' ;
+                            }
+
+                            fclose($handler);
+                        ?>
                     </p>
                     <fieldset>
                         <legend>Inserisci una nota</legend>
