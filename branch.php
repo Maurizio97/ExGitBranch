@@ -1,3 +1,16 @@
+<?php
+
+// M1: leggere tramite PHP i campi inviati dal form;
+// M2: aggiungere i dati del form in un file di testo (note.txt). Le note precedenti non devono essere perse;
+// M3: leggere le note salvate sul file e visualizzarle nel layout (dove indicato);
+// M4: aggiungere sul file l’orario di invio al salvataggio di una nota.
+
+$name = $_GET['containerName'];
+$text = $_GET['containerText'];
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="it">
     <head>
@@ -37,17 +50,22 @@
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label">Nome</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" autocomplete="off">
+                                <input type="text" class="form-control" name="containerName" autocomplete="off">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-12">
-                                <textarea class="form-control" rows="6"></textarea>
+                                <textarea class="form-control" name="containerText" rows="6"></textarea>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12">
                                 <button type="submit" class="btn btn-primary w-100">Invia</button>
+                            </div>
+                            <div>
+                                <?php
+                                    echo '<br>' . $name . ' ' . $text;
+                                ?>
                             </div>
                         </div>
                     </form>
