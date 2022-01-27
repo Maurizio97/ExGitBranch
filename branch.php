@@ -8,10 +8,11 @@ $name = $_GET['containerName'];
 $text = $_GET['containerText'];
 
 $filename = 'note.txt';
-$handler = fopen($filename, 'w');
+$handler = fopen($filename, 'a');
+$var = $name . " - " . $text;
 
-
-fwrite($handler, "mmm"); // Scrive la stringa nel file 100 volte
+fwrite($handler, "$var \n");
+// fwrite($handler, $text) . '\n'; // Scrive la stringa nel file 100 volte
 
 
 fclose($handler);
