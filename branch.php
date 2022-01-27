@@ -13,7 +13,7 @@ $filename = 'note.txt';
 
 $handler = fopen($filename, 'a');
 
-$var = $name . " - " . $text;
+$var = $name . " - " . $text . ' ' . date('h:i:s');
 
 fwrite($handler, "$var \n");
 fclose($handler);
