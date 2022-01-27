@@ -1,3 +1,15 @@
+<?php
+$filename = 'note.txt';
+$handler = fopen($filename, 'w');
+
+
+fwrite($handler, "mmm"); // Scrive la stringa nel file 100 volte
+
+
+fclose($handler);
+
+?>
+
 <!DOCTYPE html>
 <html lang="it">
     <head>
@@ -33,16 +45,16 @@
                     <fieldset>
                         <legend>Inserisci una nota</legend>
                     </fieldset>
-                    <form>
+                    <form method="GET">
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label">Nome</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" autocomplete="off">
+                                <input type="text" name="username" class="form-control" autocomplete="off">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-12">
-                                <textarea class="form-control" rows="6"></textarea>
+                                <textarea class="form-control" rows="6" name="note"></textarea>
                             </div>
                         </div>
                         <div class="row">
