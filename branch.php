@@ -4,18 +4,20 @@
 // M3: leggere le note salvate sul file e visualizzarle nel layout (dove indicato);
 // M4: aggiungere sul file l’orario di invio al salvataggio di una nota.
 
+// var name and text (input)
 $name = $_GET['containerName'];
 $text = $_GET['containerText'];
 
+// scrittura e apertura file
 $filename = 'note.txt';
+
 $handler = fopen($filename, 'a');
+
 $var = $name . " - " . $text;
 
 fwrite($handler, "$var \n");
-// fwrite($handler, $text) . '\n'; // Scrive la stringa nel file 100 volte
-
-
 fclose($handler);
+// scrittura e apertura file
 
 
 ?>
@@ -52,18 +54,10 @@ fclose($handler);
                     <p class="notes">
                         <!-- stampare qui le note salvate -->
                         <?php
-                            // $filename = 'note.txt';
                             $handler = fopen($filename, 'r');
 
-                            // if (false === $handler) {
-                            //     printf('Impossibile aprire il file %s', $filename);
-                            //     exit;
-                            // }
-
-                            $size = 1024;
-
                             while (!feof($handler)) {
-                                $content = fgets($handler, $size);
+                                $content = fgets($handler);
                                 echo '<div>' . $content . '</div>' ;
                             }
 
@@ -90,11 +84,6 @@ fclose($handler);
                         <div class="row">
                             <div class="col-12">
                                 <button type="submit" class="btn btn-primary w-100">Invia</button>
-                            </div>
-                            <div>
-                                <?php
-                                    echo '<br>' . $name . ' ' . $text;
-                                ?>
                             </div>
                         </div>
                     </form>
